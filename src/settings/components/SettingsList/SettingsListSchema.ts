@@ -1,4 +1,4 @@
-import { IsStringEmpty } from "@wisegar-org/wgo-object-extensions";
+import { IsStringEmpty } from "wgo-extensions";
 import { TranslationStore } from "../../../translation/store/TranslationStore";
 import {
   ITableLeftButton,
