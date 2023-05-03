@@ -93,6 +93,9 @@ export default defineComponent({
             certificate: "",
             isEmailConfirmed: false,
             roles: [],
+            address: "",
+            cap: "",
+            phone: "",
           }),
       },
     ];
