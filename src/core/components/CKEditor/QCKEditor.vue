@@ -1,5 +1,6 @@
 <template>
   <div
+    class="myckeditor"
     :style="{
       border: '1px solid #695656',
     }"

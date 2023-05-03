@@ -94,6 +94,7 @@ export default defineComponent({
     type: { type: String, default: "" },
     objectToken: { type: Array as PropType<string[]>, default: () => [] },
     tranStore: { type: Object as PropType<TranslationStore>, required: true },
+    selectedLangId: { type: Number, required: true },
     authStore: { type: Object as PropType<AuthStore>, required: true },
     testData: {
       type: Object as PropType<ObjectDictionary>,
@@ -202,7 +203,7 @@ export default defineComponent({
       }
     },
     getTranslationKey() {
-      return this.type ? `WGO_${this.type}_TITLE` : "";
+      return this.type ? `WGO_${this.type.toLocaleUpperCase()}_TITLE` : "";
     },
     writeToken(text: string) {
       const model = (this.$refs.editor as ObjectDictionary).$refs.editor
@@ -221,6 +222,9 @@ export default defineComponent({
   },
   watch: {
     type(): void {
+      this.loadTemplate();
+    },
+    selectedLangId(): void {
       this.loadTemplate();
     },
   },
