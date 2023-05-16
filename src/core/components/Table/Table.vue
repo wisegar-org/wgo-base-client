@@ -301,6 +301,10 @@ export default defineComponent({
     countData() {
       this.initialPagination.rowsNumber = this.countData;
     },
+    filtredData() {
+      this.initialPagination.rowsPerPage =
+        this.schema.rowsPerPageDefault || this.filtredData.length;
+    },
   },
 });
 </script>
