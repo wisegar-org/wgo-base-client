@@ -88,7 +88,7 @@ export default defineComponent({
   },
   methods: {
     async loadLanguages() {
-      this.langStore;
+      await this.langStore.loadAllLanguage();
     },
     showDetails(row: ILanguageModel) {
       this.selectedLang = row;
@@ -100,7 +100,8 @@ export default defineComponent({
     onResize() {
       this.resizeTable(this.$refs.placeholder as HTMLElement);
     },
-    onSuccess(msg: string) {
+    async onSuccess(msg: string) {
+      await this.loadLanguages();
       this.$emit("success", msg);
     },
   },
@@ -108,7 +109,7 @@ export default defineComponent({
     this.$nextTick(() => {
       this.addResize(this.onResize);
     });
-    await this.langStore.loadAllLanguage();
+    await this.loadLanguages();
   },
   async unmounted() {
     this.removeResize(this.onResize);
