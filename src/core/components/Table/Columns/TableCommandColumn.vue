@@ -2,6 +2,7 @@
   <div>
     <q-btn
       v-for="(v, k) in props.col.extra"
+      v-show="showBtn(v)"
       :key="k"
       size="sm"
       :flat="!v.label"
@@ -22,6 +23,7 @@
 </template>
 
 <script lang="ts">
+import { ITableRowButton } from "@wisegar-org/wgo-base-models/build/core/Table";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -37,6 +39,12 @@ export default defineComponent({
         return this.schema.translationStore.getTranslation(name);
       }
       return name;
+    },
+    showBtn(v: ITableRowButton) {
+      if (v.fnShow) {
+        return v.fnShow(this.props.row);
+      }
+      return true;
     },
   },
 });
