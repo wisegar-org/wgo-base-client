@@ -6,17 +6,21 @@
   "files": [
     "build"
   ],
+  "author": "Wisegar Development Group <info@wisegar.org>",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wisegar-org/wgo-base-client.git"
+  },
   "scripts": {
     "start": "nodemon",
     "build": "npx rimraf ./build && node build.cjs",
     "promote": "npm version prerelease && npm run build && npm publish",
     "upgrade": "rimraf node_modules/@wisegar-org/wgo-base-models && npm install @wisegar-org/wgo-base-models@latest -E"
-  },
-  "author": "Wisegar Development Group <info@wisegar.org>",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wisegar-org/wgo-base-client.git"
   },
   "devDependencies": {
     "@babel/types": "^7.20.7",
