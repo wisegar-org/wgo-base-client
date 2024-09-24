@@ -1,0 +1,57 @@
+{
+  "name": "@wisegar-org/wgo-client-library",
+  "version": "0.0.2-1",
+  "description": "WGO Client Vue Library",
+  "private": false,
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.8",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@quasar/extras": "^1.16.12",
+    "@types/apollo-upload-client": "^17.0.2",
+    "@types/file-saver": "^2.0.7",
+    "@types/nodemailer": "^6.4.7",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "quasar": "^2.17.0",
+    "sass-embedded": "^1.79.3",
+    "vite": "^5.4.7",
+    "vite-plugin-dts": "^1.4.1"
+  },
+  "dependencies": {
+    "@wisegar-org/wgo-base-models": "^0.0.3",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link": "^1.2.14",
+    "apollo-link-error": "^1.1.13",
+    "apollo-upload-client": "^18.0.1",
+    "cross-fetch": "^4.0.0",
+    "currency.js": "^2.0.4",
+    "dayjs": "^1.11.13",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
+    "graphql-tag": "^2.12.6",
+    "local-storage": "^2.0.0",
+    "nodemailer": "^6.9.15"
+  }
+}

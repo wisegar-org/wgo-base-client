@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+      // only uncomment if you encounter problems w. 3rd party libs
+      // See: https://github.com/vuejs/tsconfig?tab=readme-ov-file#migrating-from-typescript--50
+      // "resolvePackageJsonExports": false 
+      "allowJs": true,
+      "checkJs": false,
+      "baseUrl": ".",
+      "jsx": "preserve",
+      "strict": true,
+      "target": "ES2015",
+      "module": "ESNext",
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "moduleResolution": "Node",
+      "lib": ["esnext", "dom"],
+      "resolveJsonModule": true,
+      "types": ["unplugin-vue-define-options/macros-global"],
+      "composite": true,
+      "outDir": "dist",
+      "declarationDir": "types",
+      "rootDir": "src",
+      "paths": {
+        "@/*": ["./src/*"]
+      }
+    }, 
+    "include": ["src/env.d.ts", "src/**/*", "src/**/*.vue"],
+    "exclude": ["node_modules", "dist"],
+  }
