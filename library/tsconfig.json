@@ -19,11 +19,11 @@
       "composite": true,
       "outDir": "dist",
       "declarationDir": "types",
-      "rootDir": "src",
+      "rootDir": ".",
       "paths": {
-        "@/*": ["./src/*"]
+        "@/*": ["./*"]
       }
     }, 
-    "include": ["src/env.d.ts", "src/**/*", "src/**/*.vue"],
+    "include": ["env.d.ts", "./**/*", "./**/*.vue"],
     "exclude": ["node_modules", "dist"],
   }

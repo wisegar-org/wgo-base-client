@@ -1,15 +1,14 @@
 import type { App } from "vue";
-import MyComponent from "./Component.vue";
 import Loader from "./core/components/Loader/Loader.vue";
 import Table from "./core/components/Table/Table.vue";
-
-function AddWGOVueComponents(app: App) {
-  app.component("wg-component", MyComponent);
+import WGText from "./core/components/Text/WGTest.vue";
+function AddComponents(app: App) {
   app.component("wg-loader", Loader);
   app.component("wg-table", Table);
+  app.component("wg-text", WGText);
 }
 
-export { MyComponent, Loader, Table, AddWGOVueComponents };
+export { Loader, Table, WGText, AddComponents };
 
 /**
  * Export Services

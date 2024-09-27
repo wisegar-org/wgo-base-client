@@ -29,7 +29,7 @@ export default defineComponent({
     },
   },
   methods: {
-    getLabel(name: string) {
+    getLabel(name?: string) {
       if (name && this.schema?.translationStore) {
         return this.schema.translationStore.getTranslation(name);
       }

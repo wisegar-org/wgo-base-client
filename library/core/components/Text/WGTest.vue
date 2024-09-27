@@ -3,10 +3,10 @@
     <div
       v-if="!!html"
       v-html="getLabel(text)"
-      :class="class"
+      :class="textclass"
       :style="getStyle()"
     />
-    <div v-else :class="class" :style="getStyle()">
+    <div v-else :class="textclass" :style="getStyle()">
       <slot name="default"> {{ getLabel(text) }}</slot>
     </div>
   </div>
@@ -18,10 +18,11 @@ import { TranslationStore } from "../../../translation/store/TranslationStore";
 import { BaseTranslateComponent } from "../BaseComponents";
 
 export default defineComponent({
+  name: "WGText",
   props: {
     text: { type: String, default: "" },
     html: { type: Boolean, default: false },
-    class: { type: String, default: "text-body1" },
+    textclass: { type: String, default: "text-body1" },
     largeFont: { type: Boolean, default: false },
     tranStore: { type: Object as PropType<TranslationStore>, required: false },
   },

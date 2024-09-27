@@ -4,10 +4,10 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
     outDir: "dist",
-    minify: false,
+    minify: true,
     rollupOptions: {
       external: ["vue"],
-      input: ["src/index.ts"],
+      input: ["index.ts"],
       // output: {
       //   globals: {
       //     vue: "Vue",
@@ -29,17 +29,18 @@ export default defineConfig({
           exports: "named",
           dir: "./dist",
         },
-      ]
+      ],
     },
     lib: {
-      entry: "./src/index.ts",
+      entry: "./index.ts",
     },
   },
   plugins: [
     vue(),
     dts({
-      entryRoot: "./src",
+      entryRoot: "./",
       outputDir: ["./dist"],
       tsConfigFilePath: "./tsconfig.json",
-  }),],
+    }),
+  ],
 });

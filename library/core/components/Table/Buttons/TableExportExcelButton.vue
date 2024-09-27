@@ -1,6 +1,6 @@
 <template>
   <q-btn
-    v-if="!schema.disableExportExcel"
+    v-if="!schema?.disableExportExcel"
     flat
     round
     color="primary"
@@ -50,14 +50,14 @@ export default defineComponent({
       const workbook = new ExcelJS.Workbook();
       const sheet = workbook.addWorksheet("Table");
       const worksheet = workbook.getWorksheet(1);
-      worksheet.addRow(
+      worksheet?.addRow(
         this.columns.map((c: ITableColumn) => {
           return c.label;
         })
       );
 
       this.data.map((d: ITableData) => {
-        worksheet.addRow(
+        worksheet?.addRow(
           this.columns.map((c: ITableColumn) => {
             let value;
             if (typeof c.field == "function") {

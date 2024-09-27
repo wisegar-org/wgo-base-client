@@ -1,20 +1,19 @@
 <template>
   <q-btn
-    v-if="!schema.disableExportCsv"
+    v-if="!schema?.disableCopyClipboard"
     flat
     round
     color="primary"
-    @click="exportCSV"
-    icon="las la-file-csv"
+    @click="exportClipboard"
+    icon="content_copy"
   >
-    <q-tooltip>{{ getLabel(translations.EXPORT_CSV_TL) }}</q-tooltip>
+    <q-tooltip> {{ getLabel(translations.COPY_CLIPBOARD_TL) }} </q-tooltip>
   </q-btn>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { UtilService } from "../../../services/UtilService";
-import { saveAs } from "file-saver";
 import { translations } from "@wisegar-org/wgo-base-models/build/core";
 import {
   ITableColumn,
@@ -23,7 +22,7 @@ import {
 } from "@wisegar-org/wgo-base-models/build/core/Table";
 
 export default defineComponent({
-  name: "TableExportCsvButton",
+  name: "TableExportClipboardButton",
   props: {
     data: {
       type: Array as PropType<ITableData[]>,
@@ -44,18 +43,16 @@ export default defineComponent({
     };
   },
   methods: {
-    async exportCSV() {
-      const fileName = "export.csv";
-      const columns = this.columns.filter((col) => col.type !== "iconCommands");
+    async exportClipboard() {
       let text =
-        columns
+        this.columns
           .map((c: ITableColumn) => {
             return c.label;
           })
-          .join(",") + ",\n";
+          .join(";") + "\n";
 
-      const rows = this.data.map((d: ITableData) => {
-        const row = columns
+      const righe = this.data.map((d: ITableData) => {
+        const riga = this.columns
           .map((c: ITableColumn) => {
             let value;
             if (typeof c.field == "function") {
@@ -64,25 +61,24 @@ export default defineComponent({
               value = d[c.field];
             }
             if (c.type === "date" && c.extra)
-              value = value
-                ? UtilService.parseDate(value, c.extra as string)
-                : "";
+              value = UtilService.parseDate(value, c.extra as string);
             return value;
           })
-          .join(",");
+          .join(";");
         const regexp = /\n/gi;
-        return row.replace(regexp, "/");
+        return riga.replace(regexp, "/");
       });
-      text += rows.join(",\n");
+      text += righe.join("\n");
 
-      saveAs(new Blob([text]), fileName);
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+        await navigator.clipboard.writeText(text);
     },
     getLabel(name: string) {
       if (name && this.schema?.translationStore) {
         return this.schema.translationStore.getTranslation(name);
       }
 
-      return "Export to CSV";
+      return "Copy content to clipboard";
     },
   },
 });

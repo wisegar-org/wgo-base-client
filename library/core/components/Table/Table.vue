@@ -147,7 +147,7 @@ export default defineComponent({
   },
   data() {
     const mySchema: ITableSchema = { schema: {}, title: "" };
-    const columns: ITableColumn[] = [];
+    const columns: any[] = [];
     const visibleColumns: string[] = [];
     const filtredData: ITableData[] = [];
     const inputSequence: string[] = [];
